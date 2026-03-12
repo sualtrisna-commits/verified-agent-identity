@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       agent_name:
-        description: 'farizi'
+        description: 'Prass'
         required: true
-        default: 'farizi'
+        default: 'Farizi'
       agent_description:
-        description: 'farizi'
+        description: 'Farizi'
         required: true
-        default: 'farizi AI Agent'
+        default: 'Farizi AI Agent'
 
 jobs:
   verify:
@@ -18,15 +18,15 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Step 1 - Install ClawHub skill
-        run: npx clawhub@latest install verified-agent-identity
+        run: npx clawhub@latest install verified-agent-identity --force
 
       - name: Install script dependencies
         run: |
@@ -38,4 +38,4 @@ jobs:
 
       - name: Step 3 - Link Human to Agent
         run: |
-          node scripts/manualLinkHumanToAgent.js --challenge '{"name": "farizi", "description": "farizi AI Agent"}'
+          node scripts/manualLinkHumanToAgent.js --challenge '{"name": "Farizi", "description": "Farizi AI Agent"}'
